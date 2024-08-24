@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-var ErrDuplicateUser = errors.New("邮箱或手机号重复")
+var ErrDuplicateUser = errors.New("邮箱已被注册")
 
 type User struct {
 	Id       int64          `gorm:"primaryKey"`
