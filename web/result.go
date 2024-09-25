@@ -1,7 +1,7 @@
 package web
 
-type Result struct {
+type Result[T any] struct {
 	Code int
 	Msg  string
-	Data string
+	Data T
 }

@@ -1,0 +1,5 @@
+db:
+  dsn: "root:root@tcp(localhost:13376)/webook"
+
+redis:
+  addr: "localhost:16379"
