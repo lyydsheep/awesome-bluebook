@@ -3,6 +3,7 @@ package web
 import (
 	"awesome-bluebook/domain"
 	"awesome-bluebook/service"
+	"errors"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
@@ -54,8 +55,13 @@ func (h *UserHandler) Signup(ctx *gin.Context) {
 	})
 	switch {
 	case err == nil:
-		ctx.JSON(http.StatusOK, Result[int64]{
+		ctx.JSON(http.StatusOK, Result[int]{
 			Msg: "注册成功",
+		})
+	case errors.Is(err, service.UserDuplicateErr):
+		ctx.JSON(http.StatusOK, Result[int]{
+			Msg:  "邮箱已存在",
+			Code: 4,
 		})
 	}
 }
